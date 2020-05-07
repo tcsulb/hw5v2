@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.container > * {
+    padding: 10px;
+    flex: 1 100%;
+}
+
+.header {
+    background-color: teal;
+    color: white;
+    text-align: center;
+}
+
+@media all and (min-width: 900px) {
+    
+}
