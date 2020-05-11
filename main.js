@@ -1,11 +1,10 @@
-var form = document.querySelector()
-// const resultElement = document.getElementById("result");
+document.getElementById('submit').addEventListener('click', genPrimes() );
 
 function genPrimes() {
     
-    var n1 = document.inputs.num1.value;
-    var n2 = document.inputs.num2.value;
-    var primes = new Array();
+    const n1 = document.inputs.num1.value;
+    const n2 = document.inputs.num2.value;
+    let primes = new Array();
 
     if (n1 < n2) {
         var start = n1;
