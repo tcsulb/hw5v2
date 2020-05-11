@@ -1,6 +1,13 @@
-.container {
+body {
+    display: block;
+    margin: 15px;
+}
+
+.jumbotron {
     display: flex;
-    flex-flow: wrap;
+    flex-flow: row wrap;
+    text-align: center;
+    
 }
 
 .container > * {
@@ -12,6 +19,10 @@
     background-color: teal;
     color: white;
     text-align: center;
+}
+
+header {
+    display: block;
 }
 
 @media all and (min-width: 900px) {
