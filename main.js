@@ -1,33 +1,49 @@
-document.getElementById('submit').addEventListener('click', genPrimes() );
+const formElement = document.querySelector("form");
 
-function genPrimes() {
-    
-    const n1 = document.inputs.num1.value;
-    const n2 = document.inputs.num2.value;
-    let primes = new Array();
-
-    if (n1 < n2) {
-        var start = n1;
-        var end = n2;
-
-    } else if (n2< n1){
-        var start = n2;
-        var end = n1;
-    
+formElement.addEventListener("submit", e => {
+    e.preventDefault();
+    const n1 = e.target.elements.num1.value;
+    const n2 = e.target.elements.num2.value;
+    console.log (`${n1} and ${n2}`);
+// first check if inputs are between 2 and 100
+    if (n1 >= 2 && n1 <= 100) {
+        if (n2 >= 2 && n2 <= 100 ) {
+        // check which is bigger
+            if (n1<n2) {
+                result = genPrimes(n1,n2);
+            }
+            else {
+                result = genPrimes(n2,n1);
+            }
+        }
+    } 
+    else {
+        result = "Invalid input, please try again";
+        //document.getElementById("result2").innerHTML = "Invalid input, please try again";
     }
+    return result;
+    e.preventDefault();
+});
 
+
+function genPrimes(start, end) {
+    let primes = new Array();
     while (start <= end) {
-        if (checkPrime(start) === true) {
+        if (checkPrime(start) === true && checkPrime(end) === true) {
             primes[primes.length] = start;
         }
-        start = start + 1;   
+        start = start + 1;  
     }
 
     if (primes.length === 0) {
-        document.getElementById('result2').innerHTML = "Invalid input, please try again";
-    } else {
-        listPrimes(primes);
+        result = "Invalid input, please try again";
+        document.getElementById("result2").innerHTML = "Invalid input, please try again";
+    }  
+    else {
+        result = listPrimes(primes);
+        //listPrimes(primes);
     }
+    return result;
 }
 
 function checkPrime(num) {
@@ -46,8 +62,12 @@ function listPrimes(vals) {
     for (i = 0; i < vals.length; i++) {
         text += vals[i] + ",";
     }
-    document.getElementById('result1').innerHTML = text;
+    return text;
+    //document.getElementById('result1').innerHTML = text;
 }
+
+const result1 = document.querySelector("result1");
+const result2 = document.querySelector("result2");
     
 //     //clear the result div
 //     document.getElementById("result").innerHTML = '';
