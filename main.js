@@ -1,32 +1,36 @@
-const formElement = document.querySelector("form");
+let formElement = document.querySelector("form");
+let btn = document.querySelector("#submit");
+let output1 = document.querySelector("#output1").innerHTML="";
+let output2 = document.querySelector("#output2").innerHTML="";
 
-formElement.addEventListener("submit", e => {
+
+formElement.addEventListener("click", (e) => {
     e.preventDefault();
-    const n1 = e.target.elements.num1.value;
-    const n2 = e.target.elements.num2.value;
-    console.log (`${n1} and ${n2}`);
+    const n1 = formElement.querySelector("#num1").value;
+    const n2 = formElement.querySelector("#num2").value;
 // first check if inputs are between 2 and 100
     if (n1 >= 2 && n1 <= 100) {
         if (n2 >= 2 && n2 <= 100 ) {
         // check which is bigger
             if (n1<n2) {
-                result = genPrimes(n1,n2);
+                //output2
+                result = getPrimes(n1,n2);
             }
             else {
-                result = genPrimes(n2,n1);
+                result = getPrimes(n2,n1);
             }
         }
     } 
     else {
+        //output2
         result = "Invalid input, please try again";
-        //document.getElementById("result2").innerHTML = "Invalid input, please try again";
     }
     return result;
-    e.preventDefault();
+    
 });
 
 
-function genPrimes(start, end) {
+function getPrimes(start, end) {
     let primes = new Array();
     while (start <= end) {
         if (checkPrime(start) === true && checkPrime(end) === true) {
@@ -36,14 +40,16 @@ function genPrimes(start, end) {
     }
 
     if (primes.length === 0) {
-        result = "Invalid input, please try again";
-        document.getElementById("result2").innerHTML = "Invalid input, please try again";
+        //output2
+        result2 = "Invalid input, please try again";
     }  
     else {
-        result = listPrimes(primes);
+        // output1
+        result1 = listPrimes(primes);
         //listPrimes(primes);
     }
-    return result;
+    document.querySelector('#output2').innerHTML= result2;
+    document.querySelector('#output1').innerHTML = result1;
 }
 
 function checkPrime(num) {
@@ -63,11 +69,10 @@ function listPrimes(vals) {
         text += vals[i] + ",";
     }
     return text;
-    //document.getElementById('result1').innerHTML = text;
+    
 }
 
-const result1 = document.querySelector("result1");
-const result2 = document.querySelector("result2");
+
     
 //     //clear the result div
 //     document.getElementById("result").innerHTML = '';
