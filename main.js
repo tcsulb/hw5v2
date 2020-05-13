@@ -6,27 +6,28 @@ let output1 = document.querySelector("#output1").innerHTML="";
 let output2 = document.querySelector("#output2").innerHTML="";
 
 
-btn.addEventListener("click", validateInputs(n1, n2));
+btn.addEventListener("click", validateInputs);
 
 
-function validateInputs(first, second) {
-    let check = true;
+function validateInputs(event) {
+    let first = parseInt(document.getElementById('num1').value);
+    let second = parseInt(document.getElementById('num2').value);
     if (first < 2 || second < 2) {
         //check = false;
         result1 = "";
         result2 = "Invalid input, please try again";
-        break;
+    
     } 
     else if (first > 100 || second > 100) {
         result1 = "";
         result2 = "Invalid input, please try again";
-        break;
+        
         //check = false;
     }
-    else if (checkPrime(start) === false || checkPrime(second) === false) {
+    else if (checkPrime(first) === false || checkPrime(second) === false) {
         result1="";
         result2 = "Invalid input, please try again";
-        break;
+        
     }
     else {
         if (first < second) {
@@ -87,49 +88,7 @@ function getPrimes(start, stop) {
     }
     return primes;
     
-
-    
-    /* document.getElementById('output1').innerHTML = (`There are ${primes.length} prime numbers`);
-    document.querySelector("#output2").innerHTML = (primes + ','); */
-    
 };
 
-
-
-
-
-
-/*  while (start <= end) {
-        if (checkPrime(start) === true && checkPrime(end) === true) {
-            primes[primes.length] = start;
-        }
-        start = start + 1;  
-    } */
-
-   /*  if (count === 0) {
-        //output2
-        result2 = "Invalid input, please try again";
-    }  
-    else {
-        // output1
-        result1 = listPrimes(primes);
-        //listPrimes(primes);
-    }
-    document.querySelector('#output2').innerHTML= result2;
-    document.querySelector('#output1').innerHTML = result1;
-}
- */
-
-
-
-/*
-function listPrimes(vals) {
-    let text = "<h2>Prime Numbers</h2>";
-    for (i = 0; i < vals.length; i++) {
-        text += vals[i] + ",";
-    }
-    return text;
-    
-} */
 
     
